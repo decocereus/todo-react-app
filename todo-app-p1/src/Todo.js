@@ -1,13 +1,20 @@
-import React from 'react'
+import React from 'react';
+import "./Todo.css";
+import { List, ListItem, ListItemText, ListItemAvatar} from '@material-ui/core';
 
-function todo() {
+
+function Todo(props) {
     return (
-        <div>
-            
-        </div>
+        <List className = "todo__list">
+            <ListItem>
+                <ListItemAvatar>
+                </ListItemAvatar>
+                <ListItemText primary={props.text} secondary="Deadline: "/>
+            </ListItem>
+        </List>
     )
 }
 
-export default todo
+export default Todo
 
 
