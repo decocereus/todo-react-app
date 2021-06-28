@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react';
+import { Button,FormControl, Input, InputLabel } from '@material-ui/core';
 import './App.css';
 
 function App() {
@@ -7,13 +8,17 @@ function App() {
   const addTodoItem = (event) => {
     event.preventDefault(); // stops the refresh every time we hit submit 
     setTodoItems([...todoItems, userInput]);
+    setUserInput(''); // clear up the input after submitting 
   }
   return (
     <div className="App">
       <h1>Gonna build this shit!</h1>
       <form>
-        <input placeholder="Get it done!" value={userInput} onChange={event => setUserInput(event.target.value)}/>
-        <button type = "submit" onClick = {addTodoItem}> Add Todo</button>
+        <FormControl>
+        <InputLabel htmlFor="my-input">Write a todo</InputLabel>
+        <Input aria-describedby="todo input button" value={userInput} onChange={event => setUserInput(event.target.value)}  />
+        </FormControl>
+        <Button disabled={!userInput}type = "submit" onClick = {addTodoItem} variant="contained" color="primary">Add Todo</Button>
       </form>
       <ul>
         {todoItems.map(todo => (
