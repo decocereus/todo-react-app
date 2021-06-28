@@ -21,8 +21,7 @@ function App() {
   useEffect(() => {
     // this is executed when the app is loaded
     db.collection('todos').orderBy('timestamp','desc').onSnapshot(snapshot => {
-      console.log(snapshot.docs.map((doc) => doc.data().todo))
-      setTodoItems(snapshot.docs.map((doc) => doc.data().todo))
+      setTodoItems(snapshot.docs.map( doc => ({id: doc.id, text: doc.data().todo})))
     })
   }, [])
   
@@ -36,21 +35,21 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Gonna build this shit!</h1>
+      <h1>Welcome</h1>
       <form>
         <FormControl>
-        <InputLabel htmlFor="my-input">Write a todo</InputLabel>
+        <InputLabel htmlFor="my-input">Write a To-do</InputLabel>
         <Input aria-describedby="todo input button" value={userInput} onChange={event => setUserInput(event.target.value)}  />
         </FormControl>
-        <Button disabled={!userInput}type = "submit" onClick = {addTodoItem} variant="contained" color="primary">Add Todo</Button>
+        <Button disabled={!userInput} type = "submit" onClick = {addTodoItem} variant="contained" color="primary">Add To-do</Button>
       </form>
       <ul>
         {todoItems.map(todo => (
           // here instead of creating the list element here, we are using a component to create it 
           // which lets us modify it at any point and we just have to change the component code.
-          <Todo text={todo} />
-        // props is basically like an object and inside our component we can get a part of props
-        // by doing props.text for eg.
+          // props is basically like an object and inside our component we can get a part of props
+          // by doing props.text for eg.
+          <Todo todoObject={todo} />
         ))}
       </ul>
     </div>
