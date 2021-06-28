@@ -34,7 +34,7 @@ function Todo(props) {
     }
     return (
         <>
-            <Modal open={open} onClose={e =>  setOpen(false)}>
+            <Modal className = "modal" open={open} onClose={e =>  setOpen(false)}>
                 <span className={classes.paper}>
                 <form>
                     <FormControl>     

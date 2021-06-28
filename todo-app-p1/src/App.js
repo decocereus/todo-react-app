@@ -35,15 +35,17 @@ function App() {
   }
   return (
     <div className="App">
-      <h1>Welcome</h1>
-      <form>
-        <FormControl>
-        <InputLabel htmlFor="my-input">Write a To-do</InputLabel>
-        <Input aria-describedby="todo input button" value={userInput} onChange={event => setUserInput(event.target.value)}  />
-        </FormControl>
-        <Button disabled={!userInput} type = "submit" onClick = {addTodoItem} variant="contained" color="primary">Add To-do</Button>
-      </form>
-      <ul>
+      <div className="topForm">
+        <h1>Get Things Done!</h1>
+        <form>
+          <FormControl>
+          <InputLabel htmlFor="my-input">Write a To-do</InputLabel>
+          <Input aria-describedby="todo input button" value={userInput} onChange={event => setUserInput(event.target.value)}  />
+          </FormControl>
+          <Button disabled={!userInput} type = "submit" onClick = {addTodoItem} variant="contained" color="primary">Add To-do</Button>
+        </form>
+      </div>
+      <ul className = "todoListItems">
         {todoItems.map(todo => (
           // here instead of creating the list element here, we are using a component to create it 
           // which lets us modify it at any point and we just have to change the component code.
@@ -51,7 +53,7 @@ function App() {
           // by doing props.text for eg.
           <Todo todoObject={todo} />
         ))}
-      </ul>
+        </ul>
     </div>
   );
 }
