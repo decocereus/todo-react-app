@@ -3,18 +3,18 @@ import "./Todo.css";
 import { List, ListItem, ListItemText, ListItemAvatar, Button, Modal, makeStyles, Input, InputLabel,FormControl } from '@material-ui/core';
 import DeleteForeverIcon from '@material-ui/icons/DeleteForever';
 import EditIcon from '@material-ui/icons/Edit';
-import DoneIcon from '@material-ui/icons/Done';
 import db from "./firebase"
 
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: 'absolute',
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: '2px solid #000',
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
+        position: 'absolute',
+        alignItems: 'center',
+        width: 400,
+        backgroundColor: theme.palette.background.paper,
+        border: '2px solid #000',
+        boxShadow: theme.shadows[5],
+        padding: theme.spacing(2, 4, 3),
   },
 }));
 
@@ -40,7 +40,7 @@ function Todo(props) {
                     <FormControl>     
                         <InputLabel htmlFor="my-input">Edit</InputLabel>
                         <Input placeholder={props.todoObject.text } value = {editTodoInput} onChange = {event => setEditTodoInput(event.target.value)} />
-                        <Button type = "submit" onClick = {updateTodo} variant="contained" color="primary">Done</Button>   
+                        <Button disabled={!editTodoInput} type = "submit" onClick = {updateTodo} variant="contained" color="primary">Done</Button>   
                     </FormControl>
                 </form>
                 </span>
