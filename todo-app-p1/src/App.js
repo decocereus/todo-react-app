@@ -4,12 +4,11 @@ import "./App.css";
 import Todo from "./Todo";
 import db from "./firebase";
 import firebase from "firebase";
-import DatePicker from "react-date-picker";
 
 function App() {
   const [todoItems, setTodoItems] = useState([]);
   const [userInput, setUserInput] = useState("");
-  const [userDeadline, setUserDeadline] = useState(new Date());
+
   // When the app loads we want to get the todo items of user from the db as they are added/removed
   // By using the useEffect and the addTodoitem function we can add todo items to our data base which happens in real time
   // dynamically
@@ -49,13 +48,6 @@ function App() {
               aria-describedby="todo input button"
               value={userInput}
               onChange={(event) => setUserInput(event.target.value)}
-            />
-            <InputLabel htmlFor="my-input">Add Deadline</InputLabel>
-            <DatePicker
-              placeholder="dd-MM-YY"
-              aria-describedby="deadline button"
-              value={userDeadline}
-              onChange={(event) => setUserDeadline(event.target.value)}
             />
           </FormControl>
           <Button
